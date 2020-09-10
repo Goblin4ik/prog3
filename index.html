@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul {
+            margin-top: 50px;
+            list-style-type: none;
+            display: flex;
+            /* justify-content: center;
+            justify-items: center; */
+        }
+        /* li {
+            margin-right: 20px;
+        } */
+        
+        a {
+            padding: 16px;
+            background: red;
+            color: white;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            background: rebeccapurple;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Меню</h2>
+    <form name="myForm">
+        <p>Пункты меню: <input type="text" size="50" name="elemMenu" value="Главная, О компании, Новости"></p>
+        <p>Цвет текста: <input type="color" name="fcolor" value="#ffffff"></p>
+        <p>Цвет фона: <input type="color" name="bcolor" value="#41aedc"></p>
+        <p>Цвет :hover: <input type="color" name="hcolor" value="#335599"></p>
+        <input type="button" value="Создать меню" onclick="menu()">
+        <style id="newStyle"></style>
+        <p id="menu1"></p>
+
+    </form>
+    <div id="pic"></div>
+    <!-- <ul>
+        <li>
+            <a href="#">Главная</a></li>
+        <li>
+            <a href="#">О компании</a></li>
+        <li><a href="#">Новости</a></li>
+    </ul> -->
+
+
+    <script>
+        function menu() {
+            let elemMenu = myForm.elemMenu.value;
+            let fc = myForm.fcolor.value;
+            let bc = myForm.bcolor.value;
+            let hc = myForm.hcolor.value;
+            let arrMenu = elemMenu.split(',');
+            let s = '<ul>';
+            let s1 = '';
+            for (let i = 0; i < arrMenu.length; i++) {
+                s += `<li><a id="cl" href="#" onclick="zoom()">${arrMenu[i]}</a></li>`;
+            }
+
+
+            s += '</ul>';
+
+            s1 = `a {
+            background: ${bc};
+            color: ${fc};
+        }
+        
+        a:hover {
+            background: ${hc};
+        }`
+            newStyle.innerHTML = s1;
+            menu1.innerHTML = s;
+
+
+        }
+
+        function zoom(cl) {
+            r = Math.floor(Math.random() * 10) + 1;
+            w = `<img id="p2" src="images/${r}.png" style="width:205px">`;
+
+            pic.innerHTML = w;
+        };
+    </script>
+</body>
+
+</html>
